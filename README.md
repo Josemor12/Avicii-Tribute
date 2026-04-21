@@ -25,6 +25,13 @@ Un tributo interactivo y visualmente inmersivo dedicado a la leyenda de la músi
     * Filtros de desenfoque (`backdrop-filter`) para una interfaz moderna.
 * **JavaScript:** Lógica personalizada para el control de la API de Audio de HTML5, gestión de eventos y generación dinámica de efectos visuales.
 
+## Responsive View
+
+<img width="2400" height="1561" alt="Captura de pantalla 2026-04-21 a la(s) 3 31 18 p  m -Photoroom" src="https://github.com/user-attachments/assets/818f766d-5756-4eea-991d-fe6812659fef" />
+<img width="2400" height="1561" alt="Captura de pantalla 2026-04-21 a la(s) 3 26 14 p  m -Photoroom" src="https://github.com/user-attachments/assets/5c1fb546-3f22-44a2-9b72-7d831c0064a3" />
+<img width="2400" height="1561" alt="Captura de pantalla 2026-04-21 a la(s) 3 26 38 p  m -Photoroom" src="https://github.com/user-attachments/assets/762ee222-339e-4a7d-bf11-142780ccf6af" />
+
+
 ## 📂 Estructura del Proyecto
 
 ```text
