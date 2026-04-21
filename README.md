@@ -1,10 +1,11 @@
-import os
-
-readme_content = """# ◢◤ Avicii Tribute - My Top 10
+## ◢ ◤ Avicii Tribute - My Top 10 ◢ ◤
 
 Un tributo interactivo y visualmente inmersivo dedicado a la leyenda de la música electrónica, **Tim Bergling (Avicii)**. Este proyecto presenta una experiencia web única que combina una interfaz de "rueda de vinilos" con reproducción automática en cadena y efectos visuales atmosféricos.
 
-## ✨ Características Principales
+<img width="1470" height="956" alt="Captura de pantalla 2026-04-20 a la(s) 8 47 52 p  m" src="https://github.com/user-attachments/assets/c91dd068-615f-4428-96f9-651b6ce52f27" />
+
+
+## Características Principales
 
 * **Rueda Interactiva (Vinyl Wheel):** Una interfaz circular dinámica donde cada canción está representada por un libro/vinilo con efecto 3D al pasar el cursor (hover).
 * **Reproducción Automática en Cadena:** Sistema de audio inteligente en JavaScript que detecta el final de una pista y salta automáticamente a la siguiente de forma circular.
@@ -16,13 +17,13 @@ Un tributo interactivo y visualmente inmersivo dedicado a la leyenda de la músi
     * `Clic Izquierdo`: Reproducir canción seleccionada.
     * `Clic Derecho`: Detener reproducción y limpiar el estado actual.
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 * **HTML5:** Estructura semántica para los contenedores de audio y la rueda interactiva.
 * **CSS3:** * Animaciones complejas (`@keyframes`) para la rotación de la rueda y las partículas.
     * Efectos de transformación 3D (`preserve-3d`, `rotateY`).
     * Filtros de desenfoque (`backdrop-filter`) para una interfaz moderna.
-* **JavaScript (Vanilla):** Lógica personalizada para el control de la API de Audio de HTML5, gestión de eventos y generación dinámica de efectos visuales.
+* **JavaScript:** Lógica personalizada para el control de la API de Audio de HTML5, gestión de eventos y generación dinámica de efectos visuales.
 
 ## 📂 Estructura del Proyecto
 
