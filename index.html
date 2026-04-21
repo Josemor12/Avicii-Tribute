@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>MY TOP 10 - Avicii (Tim Bergling) Tribute</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000000;
+        }
+
+        body {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 46%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            height: auto;
+            min-width: 30%;
+            max-width: 45%;
+            opacity: 0.6;
+            filter: brightness(1.5) contrast(1.5);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .circle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .vinyl-wheel {
+            position: relative;
+            width: 850px;
+            height: 850px;
+            top: -40px;
+            animation: wheelRotate 25s linear infinite;
+            transform-origin: center center;
+        }
+
+        .vinyl-wheel:has(.book-outer:hover) {
+            animation-play-state: paused;
+        }
+
+        @keyframes wheelRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .book-outer {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            left: 50%;
+            top: 50%;
+            margin-left: -60px;
+            margin-top: -60px;
+        }
+
+        .book-inner {
+            width: 100%;
+            height: 100%;
+            animation: counterRotate 25s linear infinite;
+        }
+
+        .vinyl-wheel:has(.book-outer:hover) .book-inner {
+            animation-play-state: paused;
+        }
+
+        @keyframes counterRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        .book-outer:nth-child(1) { transform: translate(320px, 0px); }
+        .book-outer:nth-child(2) { transform: translate(259px, 188px); }
+        .book-outer:nth-child(3) { transform: translate(99px, 304px); }
+        .book-outer:nth-child(4) { transform: translate(-99px, 304px); }
+        .book-outer:nth-child(5) { transform: translate(-259px, 188px); }
+        .book-outer:nth-child(6) { transform: translate(-320px, 0px); }
+        .book-outer:nth-child(7) { transform: translate(-259px, -188px); }
+        .book-outer:nth-child(8) { transform: translate(-99px, -304px); }
+        .book-outer:nth-child(9) { transform: translate(99px, -304px); }
+        .book-outer:nth-child(10) { transform: translate(259px, -188px); }
+
+        .book-item {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+            transform-style: preserve-3d;
+            will-change: transform;
+            transform: rotateY(0deg) rotateX(5deg);
+        }
+
+        .book-outer:nth-child(1) .book-item { transform: rotateY(-8deg) rotateX(5deg); }
+        .book-outer:nth-child(2) .book-item { transform: rotateY(-12deg) rotateX(7deg); }
+        .book-outer:nth-child(3) .book-item { transform: rotateY(-5deg) rotateX(9deg); }
+        .book-outer:nth-child(4) .book-item { transform: rotateY(5deg) rotateX(9deg); }
+        .book-outer:nth-child(5) .book-item { transform: rotateY(12deg) rotateX(7deg); }
+        .book-outer:nth-child(6) .book-item { transform: rotateY(8deg) rotateX(5deg); }
+        .book-outer:nth-child(7) .book-item { transform: rotateY(12deg) rotateX(-3deg); }
+        .book-outer:nth-child(8) .book-item { transform: rotateY(5deg) rotateX(-7deg); }
+        .book-outer:nth-child(9) .book-item { transform: rotateY(-5deg) rotateX(-7deg); }
+        .book-outer:nth-child(10) .book-item { transform: rotateY(-12deg) rotateX(-3deg); }
+
+        .book-item:hover {
+            filter: brightness(1.2) drop-shadow(0 0 20px rgba(102, 204, 255, 0.8));
+            z-index: 20;
+        }
+
+        .book {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .book-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('img/vinil.gif');
+            background-size: cover;
+            background-position: center;
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            backface-visibility: hidden;
+        }
+
+        .book-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-origin: left center;
+            backface-visibility: hidden;
+            cursor: pointer;
+        }
+
+        .book-item:hover .book-front {
+            transform: rotateY(-50deg);
+        }
+
+        .book-back::after {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 9px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px black;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 4px;
+            font-family: monospace;
+        }
+
+        .book-label {
+            position: absolute;
+            bottom: -28px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 10px;
+            font-family: monospace;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 4px 8px;
+            border-radius: 15px;
+            width: fit-content;
+            margin: 0 auto;
+            backdrop-filter: blur(4px);
+            white-space: nowrap;
+            z-index: 5;
+        }
+
+        .book-outer:nth-child(1) .book-label,
+        .book-outer:nth-child(2) .book-label,
+        .book-outer:nth-child(4) .book-label,
+        .book-outer:nth-child(6) .book-label,
+        .book-outer:nth-child(7) .book-label {
+            white-space: normal;
+            font-size: 8px;
+            line-height: 1.2;
+            width: 85px;
+        }
+
+        .book-outer:nth-child(1) .book-front { background-image: url('img/avicii-waiting.jpeg'); background-color: #1a1a2e; background-size: cover; }
+        .book-outer:nth-child(2) .book-front { background-image: url('img/avicii-silhouettes.jpeg'); background-color: #16213e; background-size: cover; }
+        .book-outer:nth-child(3) .book-front { background-image: url('img/avicii-avici(01).jpg'); background-color: #0f3460; background-size: cover; }
+        .book-outer:nth-child(4) .book-front { background-image: url('img/nicktim-icould.jpeg'); background-color: #1a1a2e; background-size: cover; }
+        .book-outer:nth-child(5) .book-front { background-image: url('img/avicii-night.jpeg'); background-color: #16213e; background-size: cover; }
+        .book-outer:nth-child(6) .book-front { background-image: url('img/avicii-fade.jpeg'); background-color: #1a1a2e; background-size: cover; }
+        .book-outer:nth-child(7) .book-front { background-image: url('img/avicii-brother.jpeg'); background-color: #0f3460; background-size: cover; }
+        .book-outer:nth-child(8) .book-front { background-image: url('img/avicii-forever.jpg'); background-color: #16213e; background-size: cover; }
+        .book-outer:nth-child(9) .book-front { background-image: url('img/avicii-levels.jpeg'); background-color: #1a1a2e; background-size: cover; }
+        .book-outer:nth-child(10) .book-front { background-image: url('img/avicii-tim.webp'); background-color: #16213e; background-size: cover; }
+
+        .music-indicator {
+            position:fixed;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            padding: 2px 12px;
+            border-radius: 10px;
+            color: white;
+            font-family: monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            z-index: 20;
+            display: none;
+            align-items: center;
+            gap: 2px;
+            border: none;
+            white-space: nowrap;
+            pointer-events: none;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9);
+        }
+
+
+        .music-indicator.show {
+            display: flex;
+        }
+
+        @keyframes subtlePulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .music-indicator span:first-child {
+            font-weight: 700;
+            color: white;
+        }
+
+        .music-indicator span:last-child {
+            animation: subtlePulse 1.8s ease-in-out infinite alternate;
+            font-weight: 600;
+            color: #ffd966;
+        }
+
+        .subtitle {
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 10px;
+            font-family: monospace;
+            z-index: 20;
+            letter-spacing: 2px;
+            pointer-events: none;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 16px;
+            width: fit-content;
+            margin: 0 auto;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        /* Partículas redondas originales */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        .particle-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, #6cf, #39f, #06c);
+            animation: particlePulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes particlePulse {
+            0% { transform: scale(0.3); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+
+        /* Símbolo ◢◤ flotante */
+        .symbol-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 2;
+            font-family: monospace;
+            font-weight: bold;
+            opacity: 0;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            text-shadow: 0 0 4px rgba(255,255,255,0.3);
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE DE PARTÍCULAS Y SÍMBOLOS + AJUSTE DE ESPACIADO */
+        @media (max-width: 900px) {
+            .vinyl-wheel { width: 680px; height: 680px; top: -30px; }
+            .book-outer { width: 100px; height: 100px; margin-left: -50px; margin-top: -50px; }
+            .book-outer:nth-child(1) { transform: translate(250px, 0px); }
+            .book-outer:nth-child(2) { transform: translate(202px, 147px); }
+            .book-outer:nth-child(3) { transform: translate(77px, 238px); }
+            .book-outer:nth-child(4) { transform: translate(-77px, 238px); }
+            .book-outer:nth-child(5) { transform: translate(-202px, 147px); }
+            .book-outer:nth-child(6) { transform: translate(-250px, 0px); }
+            .book-outer:nth-child(7) { transform: translate(-202px, -147px); }
+            .book-outer:nth-child(8) { transform: translate(-77px, -238px); }
+            .book-outer:nth-child(9) { transform: translate(77px, -238px); }
+            .book-outer:nth-child(10) { transform: translate(202px, -147px); }
+            .book-label { font-size: 8px; bottom: -25px; white-space: nowrap; }
+            .subtitle { font-size: 8px; bottom: 15px; letter-spacing: 1px; }
+            .music-indicator { top: 10px; font-size: 9px; padding: 3px 10px; }
+            /* Partículas más pequeñas en tablets */
+            .particle { transform: scale(0.8); }
+            .symbol-particle { transform: scale(0.8); font-size: 11px; }
+        }
+
+        @media (max-width: 600px) {
+            .vinyl-wheel { width: 520px; height: 520px; top: -20px; }
+            .book-outer { width: 80px; height: 80px; margin-left: -40px; margin-top: -40px; }
+            .book-outer:nth-child(1) { transform: translate(190px, 0px); }
+            .book-outer:nth-child(2) { transform: translate(154px, 112px); }
+            .book-outer:nth-child(3) { transform: translate(59px, 181px); }
+            .book-outer:nth-child(4) { transform: translate(-59px, 181px); }
+            .book-outer:nth-child(5) { transform: translate(-154px, 112px); }
+            .book-outer:nth-child(6) { transform: translate(-190px, 0px); }
+            .book-outer:nth-child(7) { transform: translate(-154px, -112px); }
+            .book-outer:nth-child(8) { transform: translate(-59px, -181px); }
+            .book-outer:nth-child(9) { transform: translate(59px, -181px); }
+            .book-outer:nth-child(10) { transform: translate(154px, -112px); }
+            .book-label { font-size: 7px; bottom: -22px; }
+            .music-indicator { top: 8px; font-size: 8px; padding: 2px 8px; }
+            /* Partículas más pequeñas en móviles */
+            .particle { transform: scale(0.6); }
+            .symbol-particle { transform: scale(0.6); font-size: 9px; }
+        }
+
+        /* Ajuste del fondo centrado */
+        @media (max-width: 768px) {
+            .background-image {
+                min-width: 90%;
+                max-width: 95%;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .background-image {
+                min-width: 80%;
+                max-width: 85%;
+            }
+        }
+
+        /* Ajuste de espaciado para que el texto de arriba y abajo */
+        @media (max-width: 700px) {
+            .subtitle {
+                bottom: 5px;
+                padding: 5px 12px;
+                font-size: 8px;
+            }
+            .music-indicator {
+                top: 8px;
+                padding: 3px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .subtitle {
+                bottom: 15px;
+                padding: 4px 10px;
+                font-size: 10px;
+            }
+            .music-indicator {
+                top: 15px;
+                padding: 2px 8px;
+                font-size: 10px;
+            }
+        }
+
+        @media (min-height: 800px) {
+            .subtitle {
+                bottom: 20px;
+            }
+            .music-indicator {
+                top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="img/Gemini_Generated_Image_lr4cjlr4cjlr4cjl-Photoroom.png" alt="Avicii" class="background-image">
+    <div class="overlay"></div>
+
+    <div class="circle-container">
+        <div class="vinyl-wheel">
+            <div class="book-outer" data-song="Waiting For Love" data-audio="music/avicii-waiting.mp3">
+                <div class="book-inner">
+                    <div class="book-item">
+                        <div class="book">
+                            <div class="book-back"></div>
+                            <div class="book-front"></div>
+                        </div>
+                        <div class="book-label">WAITING FOR LOVE</div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-outer" data-song="Silhouettes" data-audio="music/avicii-silhouettes.mp3">
+                <div class="book-inner">
+                    <div class="book-item">
+                        <div class="book">
+                            <div class="book-back"></div>
+                            <div class="book-front"></div>
+                        </div>
+                        <div class="book-label">SILHOUETTES</div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-outer" data-song="Without You" data-audio="music/avicii-avici(01).mp3">
+                <div class="book-inner">
+                    <div class="book-item">
+                        <div class="book">
+                            <div class="book-back"></div>
+                            <div class="book-front"></div>
+                        </div>
+                        <div class="book-label">WITHOUT YOU</div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-outer" data-song="I Could Be The One" data-audio="music/nicktim-icould.mp3">
+                <div class="book-inner">
+                    <div class="book-item">
+                        <div class="book">
+                            <div class="book-back"></div>
+                            <div class="book-front"></div>
+                        </div>
+                        <div class="book-label">I COULD BE THE ONE</div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-outer" data-song="The Nights" data-audio="music/avicii-nights.mp3">
+                <div class="book-inner">
+                    <div class="book-item">
+                        <div class="book">
+                            <div class="book-back"></div>
+                            <div class="book-front"></div>
+                        </div>
+                        <div class="book-label">THE NIGHTS</div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-outer" data-song="Fade Into Darkness" data-audio="music/avicii-fade.mp3">
+                <div class="book-inner">
+                    <div class="book-item">
+                        <div class="book">
+                            <div class="book-back"></div>
+                            <div class="book-front"></div>
+                        </div>
+                        <div class="book-label">FADE INTO DARKNESS</div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-outer" data-song="Hey Brother" data-audio="music/avicii-brother.mp3">
+                <div class="book-inner">
+                    <div class="book-item">
+                        <div class="book">
+                            <div class="book-back"></div>
+                            <div class="book-front"></div>
+                        </div>
+                        <div class="book-label">HEY BROTHER</div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-outer" data-song="Forever Yours" data-audio="music/avicii-forever.m4a">
+                <div class="book-inner">
+                    <div class="book-item">
+                        <div class="book">
+                            <div class="book-back"></div>
+                            <div class="book-front"></div>
+                        </div>
+                        <div class="book-label">FOREVER YOURS</div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-outer" data-song="Levels" data-audio="music/avicii-levels.m4a">
+                <div class="book-inner">
+                    <div class="book-item">
+                        <div class="book">
+                            <div class="book-back"></div>
+                            <div class="book-front"></div>
+                        </div>
+                        <div class="book-label">LEVELS</div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-outer" data-song="SOS" data-audio="music/avicii-sos.m4a">
+                <div class="book-inner">
+                    <div class="book-item">
+                        <div class="book">
+                            <div class="book-back"></div>
+                            <div class="book-front"></div>
+                        </div>
+                        <div class="book-label">SOS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="music-indicator" id="musicIndicator">
+        <span>Reproduciendo:</span>
+        <span id="currentSong">...</span>
+    </div>
+
+    <div class="subtitle">
+        "ONE DAY, YOU'LL LEAVE THIS WORLD BEHIND<br>
+        SO LIVE A LIFE YOU WILL REMEMBER<br>
+        THESE ARE THE NIGHTS THAT NEVER DIE"<br> ◢◤
+    </div>
+
+    <script>
+        // ==================== CONTROL DE AUDIO CON REPRODUCCIÓN AUTOMÁTICA EN CADENA ====================
+        let currentAudio = null;
+        let currentBook = null;
+        let currentIndex = -1;          // Índice de la canción actual (0..9)
+        let isAutoPlaying = false;       // Bandera para evitar bucles al hacer clic manual
+        let autoPlayTimer = null;        // Timer de respaldo (fallback)
+        
+        const musicIndicator = document.getElementById('musicIndicator');
+        const currentSongSpan = document.getElementById('currentSong');
+        
+        // Obtener todos los elementos en el orden visual (nth-child orden natural)
+        const bookOuters = Array.from(document.querySelectorAll('.book-outer'));
+        const totalSongs = bookOuters.length;
+        
+        function clearAutoTimer() {
+            if (autoPlayTimer) {
+                clearTimeout(autoPlayTimer);
+                autoPlayTimer = null;
+            }
+        }
+        
+        function stopCurrentAudio(resetIndexFlag = false) {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                // Remover event listener para evitar múltiples 'ended'
+                currentAudio.removeEventListener('ended', onAudioEnd);
+                currentAudio = null;
+            }
+            if (currentBook) {
+                currentBook.classList.remove('playing');
+                currentBook = null;
+            }
+            if (!resetIndexFlag) {
+                // No reseteamos el índice al parar manualmente (por cambio de canción)
+            } else {
+                // Solo si se requiere reinicio completo (contexto externo)
+                if (!isAutoPlaying) currentIndex = -1;
+            }
+            if (musicIndicator && !currentAudio) {
+                // No ocultamos inmediatamente si estamos en medio de una transición
+                if (!isAutoPlaying) {
+                    musicIndicator.classList.remove('show');
+                    currentSongSpan.textContent = '...';
+                }
+            }
+            clearAutoTimer();
+        }
+        
+        // Función que se ejecuta cuando una canción termina naturalmente
+        function onAudioEnd() {
+            if (!currentAudio) return;
+            // Prevenir recursión si se llama mientras se destruye el audio
+            if (isAutoPlaying) return;
+            
+            isAutoPlaying = true;
+            
+            // Determinar siguiente índice
+            let nextIdx = currentIndex + 1;
+            if (nextIdx >= totalSongs) nextIdx = 0; // Ciclo infinito: volver al inicio
+            
+            const nextBook = bookOuters[nextIdx];
+            if (nextBook) {
+                const nextSongName = nextBook.getAttribute('data-song');
+                const nextAudioUrl = nextBook.getAttribute('data-audio');
+                // Limpiar el audio actual (ya terminó) sin resetear el indicador visual
+                if (currentAudio) {
+                    currentAudio.removeEventListener('ended', onAudioEnd);
+                    currentAudio = null;
+                }
+                if (currentBook) currentBook.classList.remove('playing');
+                // Reproducir siguiente canción
+                playAudioByBookElement(nextBook, nextAudioUrl, nextSongName, true);
+            } else {
+                // Fallback: detener todo
+                stopCurrentAudio(true);
+                isAutoPlaying = false;
+                if (musicIndicator) musicIndicator.classList.remove('show');
+            }
+            isAutoPlaying = false;
+        }
+        
+        // Función principal de reproducción (con parámetro fromAuto para no interferir)
+        function playAudioByBookElement(bookElement, audioUrl, songName, fromAuto = false) {
+            // Si ya se está reproduciendo la misma canción y es reproducción automática, evitar reiniciar
+            if (currentAudio && currentBook === bookElement && !currentAudio.paused && fromAuto) {
+                if (isAutoPlaying) return;
+            }
+            
+            // Detener cualquier reproducción actual (pero preservar el estado de índice si es auto)
+            if (currentAudio) {
+                currentAudio.removeEventListener('ended', onAudioEnd);
+                if (currentAudio.pause) currentAudio.pause();
+                currentAudio = null;
+            }
+            if (currentBook) {
+                currentBook.classList.remove('playing');
+                currentBook = null;
+            }
+            clearAutoTimer();
+            
+            // Crear nuevo audio SIN loop (para que termine y dispare 'ended')
+            const newAudio = new Audio(audioUrl);
+            newAudio.loop = false;      // Desactivado para que suene una vez y pase a la siguiente
+            newAudio.volume = 0.7;
+            
+            currentAudio = newAudio;
+            currentBook = bookElement;
+            currentBook.classList.add('playing');
+            
+            // Actualizar índice basado en la posición real en la lista
+            const idx = bookOuters.indexOf(bookElement);
+            if (idx !== -1) currentIndex = idx;
+            
+            // Actualizar UI
+            if (currentSongSpan && musicIndicator) {
+                currentSongSpan.textContent = songName;
+                musicIndicator.classList.add('show');
+            }
+            
+            // Evento cuando termina la reproducción
+            currentAudio.addEventListener('ended', onAudioEnd);
+            
+            // Reproducir con manejo de errores
+            currentAudio.play().catch(error => {
+                console.error('Error reproduciendo audio:', error);
+                // Si falla por política de autoplay, mostrar mensaje discreto
+                if (!fromAuto) {
+                    alert(`No se pudo reproducir "${songName}".\n${error.message}\n\nIntenta hacer clic nuevamente.`);
+                }
+                // Limpiar el audio defectuoso
+                if (currentAudio) {
+                    currentAudio.removeEventListener('ended', onAudioEnd);
+                    currentAudio = null;
+                }
+                if (currentBook) {
+                    currentBook.classList.remove('playing');
+                    currentBook = null;
+                }
+                musicIndicator.classList.remove('show');
+                currentSongSpan.textContent = '...';
+                currentIndex = -1;
+            });
+        }
+        
+        // Reproducción manual por clic en libro
+        function playAudio(bookElement, audioUrl, songName) {
+            // Si estamos en medio de una auto-reproducción y el usuario hace clic, cancelamos el timer y banderas
+            if (isAutoPlaying) {
+                isAutoPlaying = false;
+                clearAutoTimer();
+            }
+            // Detener el audio actual y eliminar el listener ended para evitar auto-next conflictivo
+            if (currentAudio) {
+                currentAudio.removeEventListener('ended', onAudioEnd);
+                if (!currentAudio.paused) currentAudio.pause();
+                currentAudio = null;
+            }
+            if (currentBook) {
+                currentBook.classList.remove('playing');
+                currentBook = null;
+            }
+            // Reproducir nueva canción manualmente
+            playAudioByBookElement(bookElement, audioUrl, songName, false);
+        }
+        
+        // Asignar eventos a cada libro
+        bookOuters.forEach(book => {
+            const songName = book.getAttribute('data-song');
+            const audioUrl = book.getAttribute('data-audio');
+            book.addEventListener('click', (e) => {
+                e.stopPropagation();
+                playAudio(book, audioUrl, songName);
+            });
+            book.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                // Al hacer clic derecho paramos toda reproducción
+                if (currentAudio) {
+                    currentAudio.removeEventListener('ended', onAudioEnd);
+                    currentAudio.pause();
+                    currentAudio = null;
+                }
+                if (currentBook) {
+                    currentBook.classList.remove('playing');
+                    currentBook = null;
+                }
+                currentIndex = -1;
+                if (musicIndicator) musicIndicator.classList.remove('show');
+                if (currentSongSpan) currentSongSpan.textContent = '...';
+                clearAutoTimer();
+                isAutoPlaying = false;
+            });
+        });
+        
+        console.log('🎵 Modo play automático activado: al terminar una canción se reproducirá la siguiente (orden circular). Haz clic en cualquier disco para iniciar.');
+        
+        // ==================== PARTÍCULAS REDONDAS (colores variados) ====================
+        (function() {
+            const styleSheet = document.createElement('style');
+            let keyframesCSS = '';
+            
+            for (let i = 0; i < 150; i++) {
+                const startX = Math.random() * 100;
+                const startY = 100 + Math.random() * 30;
+                const endX = Math.random() * 100;
+                const endY = -20 - Math.random() * 40;
+                const duration = 15 + Math.random() * 25;
+                const delay = Math.random() * 30;
+                
+                keyframesCSS += `
+                    @keyframes move-particle-${i} {
+                        0% { transform: translate(${startX}vw, ${startY}vh); opacity: 0; }
+                        15% { opacity: ${0.3 + Math.random() * 0.5}; }
+                        85% { opacity: ${0.3 + Math.random() * 0.5}; }
+                        100% { transform: translate(${endX}vw, ${endY}vh); opacity: 0; }
+                    }
+                `;
+                
+                const size = 2 + Math.random() * 8;
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.animation = `move-particle-${i} ${duration}s linear ${delay}s infinite`;
+                
+                const inner = document.createElement('div');
+                inner.className = 'particle-inner';
+                
+                const colorType = Math.random();
+                let gradientColor;
+                if (colorType < 0.4) {
+                    const hue = 180 + Math.random() * 80;
+                    gradientColor = `radial-gradient(circle, hsl(${hue}, 100%, 70%), hsl(${hue}, 100%, 50%))`;
+                } else if (colorType < 0.7) {
+                    const hue = 45 + Math.random() * 20;
+                    gradientColor = `radial-gradient(circle, hsl(${hue}, 100%, 65%), hsl(${hue}, 100%, 45%))`;
+                } else {
+                    const whiteShade = 80 + Math.random() * 20;
+                    gradientColor = `radial-gradient(circle, hsl(0, 0%, 100%), hsl(200, 30%, ${whiteShade}%))`;
+                }
+                
+                inner.style.background = gradientColor;
+                inner.style.animation = `particlePulse ${1 + Math.random() * 2}s ease-in-out infinite alternate`;
+                
+                particle.appendChild(inner);
+                document.body.appendChild(particle);
+            }
+            
+            styleSheet.textContent = keyframesCSS;
+            document.head.appendChild(styleSheet);
+        })();
+        
+        // ==================== SÍMBOLO ◢◤ FLOTANTE ====================
+        (function() {
+            const symbolStyle = document.createElement('style');
+            let symbolKeyframes = '';
+            const symbolCount = 24;
+            
+            for (let i = 0; i < symbolCount; i++) {
+                const isLeft = Math.random() < 0.5;
+                let startX, endX;
+                
+                if (isLeft) {
+                    startX = Math.random() * 25;
+                    endX = Math.random() * 25;
+                } else {
+                    startX = 75 + Math.random() * 18;
+                    endX = 75 + Math.random() * 18;
+                }
+                
+                const startY = 100 + Math.random() * 20;
+                const endY = -15 - Math.random() * 35;
+                const duration = 10 + Math.random() * 20;
+                const delay = Math.random() * 30;
+                
+                symbolKeyframes += `
+                    @keyframes move-symbol-${i} {
+                        0% { transform: translate(${startX}vw, ${startY}vh); opacity: 0; }
+                        20% { opacity: 0.5; }
+                        80% { opacity: 0.5; }
+                        100% { transform: translate(${endX}vw, ${endY}vh); opacity: 0; }
+                    }
+                `;
+                
+                const symbolDiv = document.createElement('div');
+                symbolDiv.className = 'symbol-particle';
+                symbolDiv.textContent = '◢◤';
+                symbolDiv.style.fontSize = '14px';
+                symbolDiv.style.color = `rgba(255, 255, 255, ${0.35 + Math.random() * 0.35})`;
+                symbolDiv.style.fontWeight = 'bold';
+                symbolDiv.style.letterSpacing = '2px';
+                symbolDiv.style.animation = `move-symbol-${i} ${duration}s linear ${delay}s infinite`;
+                symbolDiv.style.textShadow = '0 0 3px rgba(255,255,255,0.5)';
+                
+                document.body.appendChild(symbolDiv);
+            }
+            
+            symbolStyle.textContent = symbolKeyframes;
+            document.head.appendChild(symbolStyle);
+        })();
+    </script>
+</body>
+</html>
