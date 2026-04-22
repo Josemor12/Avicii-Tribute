@@ -1,4 +1,4 @@
-## ◢ ◤ Avicii Tribute - My Top 10 ◢ ◤
+## ◢ ◤ Avicii Tribute - Mi Top 10 de canciones favoritas ◢ ◤
 
 Un tributo interactivo y visualmente inmersivo dedicado a la leyenda de la música electrónica, **Tim Bergling (Avicii)**.
 
