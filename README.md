@@ -20,7 +20,7 @@ Un tributo interactivo y visualmente inmersivo dedicado a la leyenda de la músi
 ## Tecnologías Utilizadas
 
 * **HTML5:** Estructura semántica para los contenedores de audio y la rueda interactiva.
-* **CSS3:** * Animaciones complejas (`@keyframes`) para la rotación de la rueda y las partículas.
+* **CSS3:** Animaciones complejas (`@keyframes`) para la rotación de la rueda y las partículas.
     * Efectos de transformación 3D (`preserve-3d`, `rotateY`).
     * Filtros de desenfoque (`backdrop-filter`) para una interfaz moderna.
 * **JavaScript:** Lógica personalizada para el control de la API de Audio de HTML5, gestión de eventos y generación dinámica de efectos visuales.
