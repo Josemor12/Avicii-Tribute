@@ -1,6 +1,6 @@
 ## ◢ ◤ Avicii Tribute - My Top 10 ◢ ◤
 
-Un tributo interactivo y visualmente inmersivo dedicado a la leyenda de la música electrónica, **Tim Bergling (Avicii)**. Este proyecto presenta una experiencia web única que combina una interfaz de "rueda de vinilos" con reproducción automática en cadena y efectos visuales atmosféricos.
+Un tributo interactivo y visualmente inmersivo dedicado a la leyenda de la música electrónica, **Tim Bergling (Avicii)**.
 
 <img width="1470" height="956" alt="Captura de pantalla 2026-04-20 a la(s) 8 47 52 p  m" src="https://github.com/user-attachments/assets/c91dd068-615f-4428-96f9-651b6ce52f27" />
 
