@@ -13,9 +13,6 @@ Un tributo interactivo y visualmente inmersivo dedicado a la leyenda de la músi
     * **Partículas Dinámicas:** Un sistema de partículas redondas con gradientes de color (celestes, dorados y blancos) que flotan en el fondo.
     * **Símbolos Flotantes:** El icónico logo `◢◤` de Avicii integrado como elementos flotantes con animaciones aleatorias.
     * **Diseño Responsive:** Adaptado para dispositivos móviles, tablets y pantallas de escritorio.
-* **Control Intuitivo:**
-    * `Clic Izquierdo`: Reproducir canción seleccionada.
-    * `Clic Derecho`: Detener reproducción y limpiar el estado actual.
 
 ## Tecnologías Utilizadas
 
